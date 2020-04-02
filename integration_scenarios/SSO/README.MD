@@ -1,0 +1,4 @@
+# Single Sign On Scenario
+This is an integration scenario where link(s) to business partner's app have already been embedded into IBM MCM UI. When an user clicks on these links the user should not be prompted to login again on the business partner's website. This is a single sign on (SSO) scenario. Business partner apps can implement SSO with MCM.  This document describes an example SSO implementation using a simple sample application. This sample app is the OIDC Relying Party (RP) and MCM is the OIDC provider (OP) in the SSO scenario.
+## Prerequisites
+IBM MCM support OIDC and act as an OIDC provider (OP) in the SSO scenario.  Business partner’s application should support OIDC and act as an OIDC relying party (RP) during the SSO process. If you are not familiar with OIDC, this article can help with understanding the concept of OIDC. https://developer.ibm.com/recipes/tutorials/enabling-user-authentication-to-an-application-with-ibm-cloud-private-iam/#r_overview
