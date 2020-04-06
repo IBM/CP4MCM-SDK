@@ -1,0 +1,57 @@
+<server description="Liberty_RP">
+    <featureManager>
+        <feature>openidConnectClient-1.0</feature>
+        <feature>appSecurity-2.0</feature>
+        <feature>localConnector-1.0</feature>
+    </featureManager>
+    <!-- To access this server from anything other than sdk.rtp.raleigh.ibm.com or the loopback address, add a host attribute to the following element, e.g. host="*" -->
+    <httpEndpoint httpsPort="9445" id="defaultHttpEndpoint" host="*"/>
+    <keyStore id="defaultKeyStore" password="Password"/>
+ <openidConnectClient authorizationEndpointUrl="https://icp-console.apps.ocelot.os.fyre.ibm.com:443/idprovider/v1/auth/authorize" 
+                        clientId="sdksample" 
+                        clientSecret="password"
+                        id="sdksample" 
+                        tokenEndpointUrl="https://icp-console.apps.ocelot.os.fyre.ibm.com:443/idprovider/v1/auth/token" 
+                        issuerIdentifier="https://icp-console.apps.ocelot.os.fyre.ibm.com:443/idauth/oidc/endpoint/OP"  
+                        jwkEndpointUrl="https://icp-console.apps.ocelot.os.fyre.ibm.com/oidc/endpoint/OP/jwk"
+                        signatureAlgorithm="RS256" >
+</openidConnectClient>
+
+
+
+<!--
+<openidConnectClient id="oidcclient"
+           scope="openid profile"
+           clientId="oidcclient"
+           clientSecret="password"
+           discoveryEndpointUrl="https://icp-console.apps.ocelot.os.fyre.ibm.com/oidc/endpoint/OP/.well-known/openid-configuration">
+</openidConnectClient>
+-->
+
+    <logging maxFileSize="20" maxFiles="10" traceFileName="trace.log" traceFormat="BASIC" traceSpecification="*=info:com.ibm.ws.security.*=all:com.ibm.ws.webcontainer.security.*=all:com.ibm.oauth.*=all:com.ibm.wsspi.security.oauth20.*=all:com.ibm.ws.transport.http.*=all:org.apache.http.cli.e.nt.*=all"/>
+<application type="war" id="SDKSample" name="SDKSample"
+            location="${server.config.dir}/apps/SDKSample.war">
+    <application-bnd>
+        <security-role name="All Role">
+            <special-subject type="ALL_AUTHENTICATED_USERS" />
+        </security-role>
+    </application-bnd>
+</application>
+<application type="war" id="testpage" name="testpage"
+            location="${server.config.dir}/apps/testpage.war">
+    <application-bnd>
+        <security-role name="All Role">
+            <special-subject type="ALL_AUTHENTICATED_USERS" />
+        </security-role>
+    </application-bnd>
+</application>
+<application type="war" id="client" name="client"
+            location="${server.config.dir}/apps/client.war">
+    <application-bnd>
+        <security-role name="All Role">
+            <special-subject type="ALL_AUTHENTICATED_USERS" />
+        </security-role>
+    </application-bnd>
+</application>
+
+</server>
