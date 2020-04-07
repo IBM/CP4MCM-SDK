@@ -17,7 +17,9 @@ If you are already familiar with OIDC, implementing SSO for business partner app
 2. Create a registration json from the registration template.  Configure the registration json with business partner app RP's client's clientID, client secret, redirect url and trusted uri prefix.  See registration template in this document: https://www.ibm.com/support/knowledgecenter/SSFC4F_1.2.0/iam/3.4.0/auth_onboard.html
 3. Log into MCM from command console then execute command `cloudctl iam oauth-client-register -f registration.json`
 That is it.
-### Implementing SSO Example with Sample App
+
+### Long Description
+#### Implementing SSO Example with Sample App
 The Sample app is a simple one-page application.  This application is deployed as a war file to an IBM WebSphere Liberty server.  The Liberty server is configured as an OIDC client (RP).  Implementing SSO of the Sample app with MCM consist of these steps:
 1. The configuratiton of Liberty server as a OIDC client is done by editing the server.xml.
 ```
