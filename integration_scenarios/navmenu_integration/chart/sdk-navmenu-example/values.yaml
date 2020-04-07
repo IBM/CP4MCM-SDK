@@ -1,0 +1,58 @@
+# Default values for sdk-navmenu-example.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+image:
+  repository: nginxdemos
+  application: hello
+  tag: latest
+  pullPolicy: IfNotPresent
+service:
+  name: sdk-navmenu-example
+  type: ClusterIP
+  externalPort: 8588
+  internalPort: 80
+  # NavMenu: Values used by templates/ingress.yaml and templates/service.yaml for adding the
+  # service to the "hamburger" nav menu in MCM.
+  uiMenu:
+    # NavMenu: Set to true to enable adding this service to the menu
+    enabled: true
+
+    # NavMenu: The label that will be displayed for this service on the menu
+    name: SDK Example
+
+    # NavMenu: The internal id of the top-level menu item to attach to. "administer-mcm"  for
+    # the "Administer" menu.
+    id: administer-mcm
+
+    # NavMenu: Roles which are able to see the service's menu item
+    roles: ClusterAdministrator,Administrator,Operator,Viewer
+ingress:
+  enabled: true
+  # Used to create an Ingress record.
+  annotations:
+    # NavMenu: access-token requires user to be authenticated to access the service. If this is
+    # removed, anyone can access.
+    icp.management.ibm.com/auth-type: access-token
+
+    # NavMenu: ibm-icp-management uses a custom ingress handler allowing the UI to be notified
+    # of the service existence and add it to the nav menu.
+    kubernetes.io/ingress.class: ibm-icp-management
+
+    # kubernetes.io/tls-acme: "true"
+  tls:
+    # Secrets must be manually created in the namespace.
+    # - secretName: chart-example-tls
+    #   hosts:
+    #     - chart-example.local
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
