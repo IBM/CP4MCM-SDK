@@ -19,7 +19,7 @@ Variables can be defined in the values.yaml file of a helm chart and used elsewh
 
 `.Values.ingress.annotations.kubernetes.io/ingress.class`: A mandatory string value that enables the internal mechanism which notifies the ui to check the ingress object for the application and add its external URL to the menu. (Example value: ibm-icp-management)
 
-Service template
+## Service template
 
 In defining the application’s Kubernetes service helm chart we refer to the values defined in the previous section. The following are yaml values that need to be in the service yaml helm template:
 
