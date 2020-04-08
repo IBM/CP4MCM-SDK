@@ -3,6 +3,6 @@ Integrating business partner apps into IBM Cloud Pak for Multicloud Management (
 ## Integration Scenarios
 * [Single Sign On (SSO)](integration_scenarios/SSO)
 * [MCM UI navigation menu integration](integration_scenarios/navmenu_integration)
-* [Reporting security events to MCM's security occurrence API](integration_scenarios/post_security_occurrence)
+* [Reporting security events to MCM's Security Advisor API](integration_scenarios/security_findings)
 * [Gather logs](integration_scenarios/gather_logs)
 * [Gather metrics](integration_scenarios/gather_metrics)
