@@ -32,7 +32,9 @@ The Sample app is a simple one-page application.  This application is deployed a
     jwkEndpointUrl="https://<MCM PROXY IP>:443/oidc/endpoint/OP/jwk"
     signatureAlgorithm="RS256" >
 </openidConnectClient>
+```
 Alternatively, you can use OP’s discovery endpoint for configuration
+```
 <openidConnectClient id="oidcclient"
     scope="openid profile"
     clientId="oidcclient"
@@ -81,3 +83,7 @@ Alternatively, you can use OP’s discovery endpoint for configuration
 ```
 4. Log into MCM from command console then execute command `cloudctl iam oauth-client-register -f registration.json`
 
+### Note
+There are two token endpoints in MCM OP
+1. /oidc/endpoint/OP/token - this is the default Liberty token endpoint. 
+2. /idprovider/v1/auth/token - this is a MCM wrapper token endpoint.  It is recommend that you use this token endpoint. When used, the JWT will contain additional claims such as email that your OIDC client might need.
