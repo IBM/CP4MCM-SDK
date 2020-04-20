@@ -5,4 +5,4 @@ Detail info on cloudctl can be found here: https://www.ibm.com/support/knowledge
 ### Logging into MCM via cloudctl
 `cloudctl login -a https://<cluster host>:<port> -u <user> -p <pwd> -n kube-system`
 
-Once you are logged in, you can run kubectl, clodctl, helm and oc commands remotely. (assuming you have installed those tools locally)
+Once you are logged in, you can run kubectl, cloudctl, helm and oc commands remotely. (assuming you have installed those tools locally)
