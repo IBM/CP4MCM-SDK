@@ -57,3 +57,10 @@ spec:
 ```
 
 in the ingress yaml template will result in the user being redirected to the path /hello on the cluster’s ingress when the application is selected from the navigation menu.
+
+## Installing the example
+
+To install the example helm chart provided, extract it onto your system and run the following command:
+```
+helm install -n sdkexample <your_directory>/CP4MCM-SDK/integration_scenarios/navmenu_integration/chart/sdk-navmenu-example/ --tls
+```
