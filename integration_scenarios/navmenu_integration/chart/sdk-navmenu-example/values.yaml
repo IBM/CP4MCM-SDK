@@ -27,6 +27,10 @@ service:
 
     # NavMenu: Roles which are able to see the service's menu item
     roles: ClusterAdministrator,Administrator,Operator,Viewer
+
+    # NavMenu: Name label for window/tab to launch to when menu item is selected. This will
+    # cause the target application to launch in a new window/tab.
+    target: SDKExample
 ingress:
   enabled: true
   # Used to create an Ingress record.
