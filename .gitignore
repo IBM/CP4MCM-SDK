@@ -1,2 +1,5 @@
 target/
 bin/
+
+# Editor temp file
+*.swp

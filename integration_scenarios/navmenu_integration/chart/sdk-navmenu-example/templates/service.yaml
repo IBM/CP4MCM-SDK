@@ -8,6 +8,7 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
     inmenu: "{{ .Values.service.uiMenu.enabled }}" # NavMenu: Whether or not this application gets added to the nav menu
+    target: "{{ .Values.service.uiMenu.target }}" # NavMenu: Name of external window/tab to launch to when selected
   annotations:
     name: {{ .Values.service.uiMenu.name}} # NavMenu: the display name that will show in the menu
     id: {{ .Values.service.uiMenu.id }} # NavMenu:  The id of the top-level menu item to attach to

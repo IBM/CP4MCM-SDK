@@ -15,6 +15,8 @@ Variables can be defined in the values.yaml file of a helm chart and used elsewh
 
 `.Values.service.uiMenu.roles`: A string value containing a comma-separate list of role names which are allowed visibility to the new application on the menu. (Example value: ClusterAdministrator,Administrator,Operator,Viewer)
 
+`.Values.service.uiMenu.target`: A string value containing a name for a separate window/tab to launch into when the menu item is selected. (Example value: SDKExample)
+
 `.Values.ingress.annotations.icp.management.ibm.com/auth-type`: An optional string value indicating how the user must be authenticated in order to have access to the new application on the menu. If not specified, no authentication is required. (Example value: access-token)
 
 `.Values.ingress.annotations.kubernetes.io/ingress.class`: A mandatory string value that enables the internal mechanism which notifies the ui to check the ingress object for the application and add its external URL to the menu. (Example value: ibm-icp-management)
@@ -24,6 +26,8 @@ Variables can be defined in the values.yaml file of a helm chart and used elsewh
 In defining the application’s Kubernetes service helm chart we refer to the values defined in the previous section. The following are yaml values that need to be in the service yaml helm template:
 
 `.metadata.labels.inmenu`: "{{ .Values.service.uiMenu.enabled }}" # Indicates to the UI to check this service definition for navigation menu annotations.
+
+`.metadata.labels.target`: "{{ .Values.service.uiMenu.target }}" # Name of external window/tab to launch to when selected
 
 `.metadata.annotations.name`: {{ .Values.service.uiMenu.name}} # The display name that will show in the menu
 
