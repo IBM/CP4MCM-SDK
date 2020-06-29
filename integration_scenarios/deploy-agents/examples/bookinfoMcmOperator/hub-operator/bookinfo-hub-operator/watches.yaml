@@ -1,0 +1,5 @@
+---
+- group: demo.cp4mcm.ibm.com
+  version: v1alpha1
+  kind: BookInfoManager
+  chart: helm-charts/bookinfomanager

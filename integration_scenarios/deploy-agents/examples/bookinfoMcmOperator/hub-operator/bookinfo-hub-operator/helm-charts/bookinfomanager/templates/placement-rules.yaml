@@ -1,0 +1,7 @@
+apiVersion: app.ibm.com/v1alpha1
+kind: PlacementRule
+metadata:
+  name: bookinfo-placement
+  labels:
+    purpose: icam-demo
+spec: {{ toYaml .Values.placementRulesSpec | nindent 2 }}

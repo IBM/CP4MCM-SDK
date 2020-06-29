@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookinfo-klusterlet-operator
+  namespace: bookinfo-klusterlet
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: bookinfo-klusterlet-operator
+  template:
+    metadata:
+      labels:
+        name: bookinfo-klusterlet-operator
+    spec:
+      serviceAccountName: bookinfo-klusterlet-operator
+      containers:
+        - name: bookinfo-klusterlet-operator
+          # Replace this with the built image name
+          image: quay.io/zach_robinson/bookinfo-klusterlet-operator:0.0.1
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "bookinfo-klusterlet-operator"

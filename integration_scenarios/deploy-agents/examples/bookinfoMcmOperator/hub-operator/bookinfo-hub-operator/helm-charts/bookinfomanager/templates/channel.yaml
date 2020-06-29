@@ -1,0 +1,10 @@
+apiVersion: app.ibm.com/v1alpha1
+kind: Channel
+metadata:
+  name: bookinfo-ns-channel
+  labels:
+    purpose: icam-demo
+    appname: bookinfo-demo
+spec:
+  type: Namespace
+  pathname: {{ .Release.Namespace }}
