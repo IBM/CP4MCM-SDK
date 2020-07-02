@@ -1,0 +1,32 @@
+apiVersion: app.ibm.com/v1alpha1
+kind: Deployable
+metadata:
+  annotations:
+    app.ibm.com/is-local-deployable: "false"
+  name: bookinfo-klusterlet-crd
+  labels:
+    appname: bookinfo
+spec:
+  template:
+    apiVersion: apiextensions.k8s.io/v1
+    kind: CustomResourceDefinition
+    metadata:
+      name: bookinfos.demo.cp4mcm.ibm.com
+    spec:
+      group: demo.cp4mcm.ibm.com
+      names:
+        kind: BookInfo
+        listKind: BookInfoList
+        plural: bookinfos
+        singular: bookinfo
+      scope: Namespaced
+      versions:
+        - name: v1alpha1
+          schema:
+            openAPIV3Schema:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true
+          served: true
+          storage: true
+          subresources:
+            status: {}

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookinfo-hub-operator
+  namespace: bookinfo-manager
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: bookinfo-hub-operator
+  template:
+    metadata:
+      labels:
+        name: bookinfo-hub-operator
+    spec:
+      serviceAccountName: bookinfo-hub-operator
+      containers:
+        - name: bookinfo-hub-operator
+          # Replace this with the built image name
+          image: quay.io/zach_robinson/bookinfo-hub-operator:0.0.1
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "bookinfo-hub-operator"
