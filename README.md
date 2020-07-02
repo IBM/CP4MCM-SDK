@@ -6,3 +6,4 @@ Integrating business partner apps into IBM Cloud Pak for Multicloud Management (
 * [Reporting security events to MCM's Security Advisor API](integration_scenarios/security_findings)
 * [Gather logs](integration_scenarios/gather_logs)
 * [Gather metrics](integration_scenarios/gather_metrics)
+* [Deploy an Agent or Another Application Using the App-Model](https://github.com/IBM/CP4MCM-SDK/tree/master/integration_scenarios/deploy-agents)
