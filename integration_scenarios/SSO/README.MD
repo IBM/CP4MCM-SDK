@@ -42,7 +42,7 @@ Alternatively, you can use OP’s discovery endpoint for configuration
     discoveryEndpointUrl="https://<MCM PROXY IP>/oidc/endpoint/OP/.well-known/openid-configuration">
 </openidConnectClient>
 ```
-  [link to sample server.xml](examples/old_method/on-prem_liberty/server.xml)
+  [link to sample server.xml](examples/deprecated/on-prem_liberty/server.xml)
 
 2. Build and deploy the Sample app to the configured Liberty server
 3. Create RP registration.json from template.  See registration template in this document: https://www.ibm.com/support/knowledgecenter/SSFC4F_1.2.0/iam/3.4.0/auth_onboard.html
