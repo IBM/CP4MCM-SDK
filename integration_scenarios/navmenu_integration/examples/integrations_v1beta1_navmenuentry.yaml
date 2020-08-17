@@ -1,0 +1,21 @@
+apiVersion: integrations.sdk.cp4mcm.ibm.com/v1beta1
+kind: NavMenuEntry
+metadata:
+  name: ibm
+spec:
+  # The name of the browser tab that the link will be opened in
+  target: "ibm"
+  # The name that will be displayed on the item in the drop-down menu
+  name: "ibm"
+  # The submenu that the new entry will appear under, available options are:
+  # "administer-mcm";"sre";"monitor";"costs";"automate";"applications";"observe"
+  parentId: "administer-mcm"
+  # User roles that will be able to see the menu item in the UI, available options are:
+  # "ClusterAdministrator";"Administrator";"Operator";"Viewer";"Editor";"Auditor";"AccountAdministrator"
+  roles:
+    - name: ClusterAdministrator
+    - name: Administrator
+    - name: Operator
+    - name: Viewer
+  # The URL that the new menu entry will link to
+  url: https://ibm.com
