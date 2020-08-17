@@ -1,4 +1,4 @@
-# Adding applications to CloudPak using the NavMenuEntry Custom-Resource
+# Adding Applications to CloudPak Using the NavMenuEntry Custom-Resource
 ```
 apiVersion: integrations.sdk.cp4mcm.ibm.com/v1beta1
 kind: NavMenuEntry
@@ -25,7 +25,7 @@ spec:
 ```
 ![image](./NavMenuExample.png)
 
-# [DEPRECATED] Adding applications to CloudPak navigation menu with Helm chart annotations
+# [DEPRECATED] Adding Applications to CloudPak Navigation Menu with Helm Chart Annotations
 
 When installing an application into CloudPak for MCM, it is possible to add it to the “hamburger” navigation menu so that users can launch it directly from within the CloudPak. This is done via a set of annotations to the application’s helm chart. With these in place, the installation will detect them and automatically add the new application to the menu. When the user selects the new application from the menu, the link launched will be the one extracted from the application’s own ingress object as also defined in the helm chart.
 
