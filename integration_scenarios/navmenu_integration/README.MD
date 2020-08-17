@@ -4,6 +4,7 @@ apiVersion: integrations.sdk.cp4mcm.ibm.com/v1beta1
 kind: NavMenuEntry
 metadata:
   name: ibm
+  # This resource is Cluster-Scoped, so leave the namespace blank
 spec:
   # The name of the browser tab that the link will be opened in
   target: "ibm"
