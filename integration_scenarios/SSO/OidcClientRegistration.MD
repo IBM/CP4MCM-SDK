@@ -29,7 +29,7 @@ client_secret:
 ```
 When `apply_client_secret` is set to `true` a new Kubernetes secret with the specified `secretName` will automatically be created in the same namespace as the OidcClientRegistration, which will contain the automatically generated client secret in the key specified in `secretKey`. When `apply_client_secret` is set to `false`, the caller is expected to create and manage this Kubernetes secret instead. The provided value in the specified key will be registered as the client-secret for the new OIDC client.
 ## Acquiring the ClientID
-Once the custom-resource has been reconciled, a ClientID will automatically be chosen for it. The generated ClientID should follow this format: `sdk.cp4mcm.ibm.com.{{ .metadata.namespace }}.{{ .metadata.name }}`, where the namespace and name refer to the OidcClientRegistration resource in Kubernetes. The ClientID will also appear in the `.status.state` field of the resource once it has been reconciled. This can be verified like so:
+Once the custom-resource has been reconciled, a ClientID will automatically be chosen for it. The generated ClientID will follow this format: `sdk.cp4mcm.ibm.com.{{ .metadata.namespace }}.{{ .metadata.name }}`, where the namespace and name refer to the OidcClientRegistration resource in Kubernetes. The ClientID will also appear in the `.status.state` field of the resource once it has been reconciled. This can be verified like so:
 ```
 $ oc get oidc oidcclientregistration-sample
 
