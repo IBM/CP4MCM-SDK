@@ -1,7 +1,33 @@
-# Adding applications to Cloud Pack navigation menu with Helm chart annotations
+# Adding Applications to CloudPak Using the NavMenuEntry Custom-Resource
+```
+apiVersion: integrations.sdk.cp4mcm.ibm.com/v1beta1
+kind: NavMenuEntry
+metadata:
+  name: ibm
+  # This resource is Cluster-Scoped, so leave the namespace blank
+spec:
+  # The name of the browser tab that the link will be opened in
+  target: "ibm"
+  # The name that will be displayed on the item in the drop-down menu
+  name: "ibm"
+  # The submenu that the new entry will appear under, available options are:
+  # "administer-mcm";"sre";"monitor";"costs";"automate";"applications";"observe"
+  parentId: "administer-mcm"
+  # User roles that will be able to see the menu item in the UI, available options are:
+  # "ClusterAdministrator";"Administrator";"Operator";"Viewer";"Editor";"Auditor";"AccountAdministrator"
+  roles:
+    - name: ClusterAdministrator
+    - name: Administrator
+    - name: Operator
+    - name: Viewer
+  # The URL that the new menu entry will link to
+  url: https://ibm.com
+```
+![image](./NavMenuExample.png)
 
+# [DEPRECATED] Adding Applications to CloudPak Navigation Menu with Helm Chart Annotations
 
-When installing an application into Cloud Pack for MCM, it is possible to add it to the “hamburger” navigation menu so that users can launch it directly from within the Cloud Pack. This is done via a set of annotations to the application’s helm chart. With these in place, the installation will detect them and automatically add the new application to the menu. When the user selects the new application from the menu, the link launched will be the one extracted from the application’s own ingress object as also defined in the helm chart.
+When installing an application into CloudPak for MCM, it is possible to add it to the “hamburger” navigation menu so that users can launch it directly from within the CloudPak. This is done via a set of annotations to the application’s helm chart. With these in place, the installation will detect them and automatically add the new application to the menu. When the user selects the new application from the menu, the link launched will be the one extracted from the application’s own ingress object as also defined in the helm chart.
 
 ## Values used
 
