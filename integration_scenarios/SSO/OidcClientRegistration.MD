@@ -21,7 +21,7 @@ spec:
 ```
 This example shows the minimum set of values required to create the oidc-client registration. For information about all available oidc-client options see documentation [here](https://www.ibm.com/support/knowledgecenter/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_client_registration.html).
 ### Templated URLs
-As with the [`NavMenuEntry`](../navmenu_integration/README.MD) resource, the urls in this resource can be templated. Any usage of `{{ .OpenShiftBaseUrl }}` will be automatically replaced with the OpenShift Base-URL for the cluster. If using Helm, the `{` and `}` characters must be escaped to prevent Helm from interpreting them as templates.
+As with the [`NavMenuEntry`](../navmenu_integration/README.MD) resource, the urls in this resource can be templated. Any usage of `{{ .OpenShiftBaseUrl }}` will be automatically replaced with the OpenShift Base-URL for the cluster. If using Helm, the `{` and `}` characters must be escaped to prevent Helm from interpreting them as templates. Escaping can be done like so: `"{{ "{{" }} .OpenShiftBaseUrl {{ "}}" }}"`
 ## Managing the Client-Secret in Kubernetes
 In the above example, these fields define the Kubernetes secret that will hold the value of the oidc-client secret:
 ```

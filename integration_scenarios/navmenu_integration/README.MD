@@ -24,6 +24,7 @@ spec:
   url: https://mysvc-myns.{{ .OpenShiftBaseUrl }} 
   # the {{ .OpenShiftBaseUrl }} template will automatically be replaced by the cluster's base-url if used,
   # '{' and '}' characters will need to be escaped if using Helm to ensure they are not interpreted as templates by Helm
+  # escaping can be done like so: "{{ "{{" }} .OpenShiftBaseUrl {{ "}}" }}"
 ```
 ![image](./NavMenuExample.png)
 
