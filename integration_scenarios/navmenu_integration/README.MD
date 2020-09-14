@@ -21,7 +21,9 @@ spec:
     - name: Operator
     - name: Viewer
   # The URL that the new menu entry will link to
-  url: https://ibm.com
+  url: https://mysvc-myns.{{ .OpenShiftBaseUrl }} 
+  # the {{ .OpenShiftBaseUrl }} template will automatically be replaced by the cluster's base-url if used,
+  # '{' and '}' characters will need to be escaped if using Helm to ensure they are not interpreted as templates by Helm
 ```
 ![image](./NavMenuExample.png)
 
