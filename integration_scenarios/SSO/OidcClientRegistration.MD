@@ -38,9 +38,10 @@ $ oc get oidc oidcclientregistration-sample
 NAME                            STATUS       CLIENT_ID
 oidcclientregistration-sample   CONFIGURED   sdk.cp4mcm.ibm.com.default.oidcclientregistration-sample
 ```
-## Acquiring the OIDC Provider Endpoints
-If `apply_client_secret` is set to `true` then the generated secret will also contain two additional data fields that can be referenced in order to acquire the OIDC provider URL. These fields will be `BASE_OIDC_URL` and `OIDC_ISSUER_URL` which will be set to these values:
+## Acquiring the OIDC Provider Endpoints and ClientID
+If `apply_client_secret` is set to `true` then the generated secret will also contain two additional data fields that can be referenced in order to acquire the OIDC provider URL and client-id. These fields will be `BASE_OIDC_URL`, `OIDC_ISSUER_URL`, and `CLIENT_ID` which will be set to these values:
 ```
 BASE_OIDC_URL: https://cp-console.apps.<OpenShiftBaseUrl>/oidc/endpoint/OP
 OIDC_ISSUER_URL: https://cp-console.apps.<OpenShiftBaseUrl>/idauth/oidc/endpoint/OP
+CLIENT_ID: sdk.cp4mcm.ibm.com.< .metadata.namespace >.< .metadata.name >
 ```
