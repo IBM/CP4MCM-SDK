@@ -1,0 +1,16 @@
+apiVersion: integrations.sdk.cp4mcm.ibm.com/v1beta1
+kind: OidcClientRegistration
+metadata:
+  name: oidcclientregistration-sample
+spec:
+  registration:
+    post_logout_redirect_uris:
+      - https://mysvc-myns.{{ .OpenShiftBaseUrl }}
+    trusted_uri_prefixes:
+      - https://mysvc-myns.{{ .OpenShiftBaseUrl }}
+    redirect_uris:
+      - https://mysvc-myns.{{ .OpenShiftBaseUrl }}
+    client_secret:
+      secretName: client-reg-secret
+      secretKey: client_secret
+    apply_client_secret: true

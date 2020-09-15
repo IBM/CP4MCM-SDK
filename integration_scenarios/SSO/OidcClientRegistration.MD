@@ -20,6 +20,8 @@ spec:
     apply_client_secret: true
 ```
 This example shows the minimum set of values required to create the oidc-client registration. For information about all available oidc-client options see documentation [here](https://www.ibm.com/support/knowledgecenter/SSEQTP_liberty/com.ibm.websphere.wlp.doc/ae/twlp_client_registration.html).
+### Templated URLs
+As with the [`NavMenuEntry`](../navmenu_integration/README.MD) resource, the urls in this resource can be templated. Any usage of `{{ .OpenShiftBaseUrl }}` will be automatically replaced with the OpenShift Base-URL for the cluster. If using Helm, the `{` and `}` characters must be escaped to prevent Helm from interpreting them as templates. Escaping can be done like so: `"{{ "{{" }} .OpenShiftBaseUrl {{ "}}" }}"`
 ## Managing the Client-Secret in Kubernetes
 In the above example, these fields define the Kubernetes secret that will hold the value of the oidc-client secret:
 ```
@@ -35,4 +37,11 @@ $ oc get oidc oidcclientregistration-sample
 
 NAME                            STATUS       CLIENT_ID
 oidcclientregistration-sample   CONFIGURED   sdk.cp4mcm.ibm.com.default.oidcclientregistration-sample
+```
+## Acquiring the OIDC Provider Endpoints and ClientID
+If `apply_client_secret` is set to `true` then the generated secret will also contain two additional data fields that can be referenced in order to acquire the OIDC provider URL and client-id. These fields will be `BASE_OIDC_URL`, `OIDC_ISSUER_URL`, and `CLIENT_ID` which will be set to these values:
+```
+BASE_OIDC_URL: https://cp-console.apps.<OpenShiftBaseUrl>/oidc/endpoint/OP
+OIDC_ISSUER_URL: https://cp-console.apps.<OpenShiftBaseUrl>/idauth/oidc/endpoint/OP
+CLIENT_ID: sdk.cp4mcm.ibm.com.< .metadata.namespace >.< .metadata.name >
 ```
