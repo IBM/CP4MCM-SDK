@@ -1,0 +1,31 @@
+apiVersion: integrations.sdk.management.ibm.com/v1beta1
+kind: ApplicationLaunchInContextPolicy
+metadata:
+  name: applicationlaunchincontextpolicy-sample
+spec:
+#######################################################################################################################
+# A Selector can be optionally defined to limit the apps that in-context links will be generated for
+# By default links will be generated for all applications
+#######################################################################################################################
+  selector:
+    matchLabels:
+      monitored: "true"
+#######################################################################################################################
+# URL template can reference the OpenShift base URL (e.g. apps.yellow-20c.dev.multicloudops.io)
+# The template can also reference any value within the K8S Sig application resource, these values will be filled in
+# for each individual application matched by the selector to generate a link for each one
+# See https://github.com/kubernetes-sigs/application for details about the application resource
+#######################################################################################################################
+# Templating brackets must be escaped properly when using helm to ensure that they will be preserved in the resource
+# that is submitted after Helm has performed its own templating steps; in a Helm chart the field below would look like:
+# https://app-monitoring.{{ "{{" }} .OpenShiftBaseUrl {{ "}}" }}/apps/{{ "{{" }} .Application.Namespace {{ "}}" }}/{{ "{{" }} .Application.Name {{ "}}" }}
+#######################################################################################################################
+  urlTemplate: https://app-monitoring.{{ .OpenShiftBaseUrl }}/apps/{{ .Application.Namespace }}/{{ .Application.Name }}
+#######################################################################################################################
+# The interval in-between subsequent re-discovery of applications and re-generation of in-context links in nanoseconds
+#######################################################################################################################
+  refreshInterval: 300000000000
+#######################################################################################################################
+# The text that will be displayed on the link
+#######################################################################################################################
+  linkName: "App Monitoring"
