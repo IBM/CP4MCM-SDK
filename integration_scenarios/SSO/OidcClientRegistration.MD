@@ -1,7 +1,7 @@
 # Register an OIDC Client Using the OidcClientRegistration Custom-Resource
 ## Example
 ```
-apiVersion: integrations.sdk.cp4mcm.ibm.com/v1beta1
+apiVersion: integrations.sdk.management.ibm.com/v1beta1
 kind: OidcClientRegistration
 metadata:
   name: oidcclientregistration-sample

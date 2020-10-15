@@ -1,6 +1,6 @@
 # Adding Applications to CloudPak Using the NavMenuEntry Custom-Resource
 ```
-apiVersion: integrations.sdk.cp4mcm.ibm.com/v1beta1
+apiVersion: integrations.sdk.management.ibm.com/v1beta1
 kind: NavMenuEntry
 metadata:
   name: ibm
