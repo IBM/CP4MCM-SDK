@@ -31,17 +31,17 @@ client_secret:
 ```
 When `apply_client_secret` is set to `true` a new Kubernetes secret with the specified `secretName` will automatically be created in the same namespace as the OidcClientRegistration, which will contain the automatically generated client secret in the key specified in `secretKey`. When `apply_client_secret` is set to `false`, the caller is expected to create and manage this Kubernetes secret instead. The provided value in the specified key will be registered as the client-secret for the new OIDC client.
 ## Acquiring the ClientID
-Once the custom-resource has been reconciled, a ClientID will automatically be chosen for it. The generated ClientID will follow this format: `sdk.cp4mcm.ibm.com.{{ .metadata.namespace }}.{{ .metadata.name }}`, where the namespace and name refer to the OidcClientRegistration resource in Kubernetes. The ClientID will also appear in the `.status.state` field of the resource once it has been reconciled. This can be verified like so:
+Once the custom-resource has been reconciled, a ClientID will automatically be chosen for it. The generated ClientID will follow this format: `sdk.management.ibm.com.{{ .metadata.namespace }}.{{ .metadata.name }}`, where the namespace and name refer to the OidcClientRegistration resource in Kubernetes. The ClientID will also appear in the `.status.state` field of the resource once it has been reconciled. This can be verified like so:
 ```
 $ oc get oidc oidcclientregistration-sample
 
 NAME                            STATUS       CLIENT_ID
-oidcclientregistration-sample   CONFIGURED   sdk.cp4mcm.ibm.com.default.oidcclientregistration-sample
+oidcclientregistration-sample   CONFIGURED   sdk.management.ibm.com.default.oidcclientregistration-sample
 ```
 ## Acquiring the OIDC Provider Endpoints and ClientID
 If `apply_client_secret` is set to `true` then the generated secret will also contain two additional data fields that can be referenced in order to acquire the OIDC provider URL and client-id. These fields will be `BASE_OIDC_URL`, `OIDC_ISSUER_URL`, and `CLIENT_ID` which will be set to these values:
 ```
 BASE_OIDC_URL: https://cp-console.apps.<OpenShiftBaseUrl>/oidc/endpoint/OP
 OIDC_ISSUER_URL: https://cp-console.apps.<OpenShiftBaseUrl>/idauth/oidc/endpoint/OP
-CLIENT_ID: sdk.cp4mcm.ibm.com.< .metadata.namespace >.< .metadata.name >
+CLIENT_ID: sdk.management.ibm.com.< .metadata.namespace >.< .metadata.name >
 ```
