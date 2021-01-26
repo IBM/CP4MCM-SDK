@@ -45,3 +45,6 @@ BASE_OIDC_URL: https://cp-console.apps.<OpenShiftBaseUrl>/oidc/endpoint/OP
 OIDC_ISSUER_URL: https://cp-console.apps.<OpenShiftBaseUrl>/idauth/oidc/endpoint/OP
 CLIENT_ID: sdk.management.ibm.com.< .metadata.namespace >.< .metadata.name >
 ```
+
+## CloudPak Certificate Secret
+In some environments, the OIDC endpoints may be hosted using self-singed certificates. These certificates can be imported in X509 format from the `cs-ca-certificate-secret` secret in any namespace that has at least one `OidcClientRegistration` resource.
