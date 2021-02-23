@@ -44,6 +44,12 @@ If `apply_client_secret` is set to `true` then the generated secret will also co
 BASE_OIDC_URL: https://cp-console.apps.<OpenShiftBaseUrl>/oidc/endpoint/OP
 OIDC_ISSUER_URL: https://cp-console.apps.<OpenShiftBaseUrl>/idauth/oidc/endpoint/OP
 CLIENT_ID: sdk.management.ibm.com.< .metadata.namespace >.< .metadata.name >
+AUTHORIZE_ENDPOINT: https://cp-console.<OpenShiftBaseUrl>/idprovider/v1/auth/authorize
+JWK_ENDPOINT: https://cp-console.<OpenShiftBaseUrl>/oidc/endpoint/OP/jwk
+TOKEN_ENDPOINT: https://cp-console.<OpenShiftBaseUrl>/idprovider/v1/auth/token
+TRUSTED_URI_PREFIX_0: https://myapp.<OpenShiftBaseUrl>
+USER_INFO_ENDPOINT: https://cp-console.<OpenShiftBaseUrl>/idprovider/v1/auth/userInfo
+WELL_KNOWN_ENDPOINT: https://cp-console.<OpenShiftBaseUrl>/idprovider/v1/auth/.well-known/openid-configuration
 ```
 
 ## CloudPak Certificate Secret
