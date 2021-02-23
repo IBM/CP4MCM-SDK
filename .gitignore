@@ -3,3 +3,6 @@ bin/
 
 # Editor temp file
 *.swp
+
+#IDE Paraphernalia
+.idea/
